@@ -1,0 +1,56 @@
+.container {
+    background-color: white;
+    height: 650px;
+    width: 1400px;
+    border-radius: 15px;
+    text-align: center;
+    padding: 20px;
+}
+h1{
+    color: var(--color-dark);
+    margin-bottom: 20px;
+}
+.form-busca{
+    text-align: left;
+    margin-bottom: 20px;
+}
+.form-busca input{
+    border: solid 2px var(--color-dark);
+    outline: none;
+    background-color: var(--color-bginput);
+    height: 12px;
+    width: 200px;
+    border-radius: 20px;
+    padding: 12px;
+    margin-left: 18px;
+}
+.form-busca button{
+    outline: none;
+    border: none;
+    background-color: var(--color-dark);
+    color: white;
+    height: 28px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+table {
+    width: 100%;
+    margin: 12px;
+    text-align: left;
+    border: 2px solid var(--color-dark);
+    border-radius: 6px;
+    padding: 12px;
+}
+.colunas{
+    background-color: var(--color-dark);
+    color: white;
+}
+td {
+    border: 2px solid black;
+}
+th {
+    padding-right: 20px;
+    border-radius: 4px;
+}

@@ -1,0 +1,80 @@
+.container {
+    background-color: rgb(255, 255, 255);
+    width: 650px;
+    height: 720px;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 15px ;
+    border: solid 2px var(--color-dark);
+}
+.img-logo img {
+    width: 70px;
+   height: 70px;
+   border: 2px solid var(--color-dark);
+   border-radius: 50%;
+}
+.container h2{
+    color: var(--color-dark);
+}
+.container div{
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+}
+.container input{
+    border: solid 2px var(--color-dark);
+    outline: none;
+    background-color: var(--color-bginput);
+    height: 30px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 12px;
+    margin-left: 30px;
+}
+.container textarea{
+    border: solid 2px var(--color-dark);
+    outline: none;
+    background-color: var(--color-bginput);
+    border-radius: 6px;
+    width: 450px;
+    height: 120px;
+    padding: 14px;
+    margin-top: 10px;
+}
+.container select{
+    border: solid 2px var(--color-dark);
+    outline: none;
+    background-color: var(--color-bginput);
+    height: 30px;
+    width: 100%;
+    border-radius: 6px;
+    margin-left: 2em;
+}
+fieldset {
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    border-color:#104e9a ;
+}
+legend {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.btn {
+    margin-top: 1em;
+    outline: none;
+    border: none;
+    background-color: var(--color-dark);
+    color: white;
+    height: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px ;
+    cursor: pointer;
+}

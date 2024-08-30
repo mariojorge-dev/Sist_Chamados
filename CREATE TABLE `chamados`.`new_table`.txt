@@ -1,0 +1,11 @@
+CREATE TABLE `chamados`.`new_table` (
+  `idchamado` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(200) NULL,
+  `responsavel` VARCHAR(200) NOT NULL,
+  `telefone` VARCHAR(13) NULL,
+  `orgao` VARCHAR(200) NOT NULL,
+  `setor` VARCHAR(200) NOT NULL,
+  `problema` VARCHAR(200) NULL,
+  `desc-problem` VARCHAR(500) NOT NULL,
+  `data-abertura` DATE NOT NULL,
+  PRIMARY KEY (`idchamado`));
