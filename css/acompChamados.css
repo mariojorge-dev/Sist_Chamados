@@ -12,7 +12,6 @@ h1{
 }
 .form-busca{
     text-align: left;
-    margin-bottom: 20px;
 }
 .form-busca input{
     border: solid 2px var(--color-dark);
@@ -37,10 +36,8 @@ h1{
 }
 table {
     width: 100%;
-    margin: 12px;
     text-align: left;
-    border: 2px solid var(--color-dark);
-    border-radius: 6px;
+    
     padding: 12px;
 }
 .colunas{
@@ -53,4 +50,10 @@ td {
 th {
     padding-right: 20px;
     border-radius: 4px;
+}
+.tabela{
+    
+    border-radius: 16px;
+    border: 2px solid var(--color-dark);
+    border-radius: 6px;
 }
