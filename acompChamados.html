@@ -6,6 +6,8 @@
     <title>Acompanhar Chamados</title>
     <link rel="stylesheet" href="./css/acompChamados.css">
     <link rel="stylesheet" href="./css/global.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <div class="container">
@@ -13,31 +15,35 @@
         <div class="tabela">
             <div class="form-busca">
                 <form  action="">
-                    <input type="search">
-                    <button>Buscar</button>
+                    <input type="search" placeholder="Buscar Chamados">
+                    <button><ion-icon name="search-outline"></ion-icon></button>
                 </form>
             </div>
-            <div>
-                <table class="chamados-abertos">
-                    <tr class="colunas">
+            <div class="wrap-scroll">
+                <table>
+                    <tr>
                         <th>Id</th>
                         <th>Responsável</th>
                         <th>Contato</th>
                         <th>Orgão</th>
                         <th>Setor</th>
                         <th>Problema</th>
-                        <th>Descrição do Problema</th>                    
+                        <th>Descrição do Problema</th>
+                        <th>Data de Abertutra</th>
+                        <th>Status</th>                     
                     </tr>
-                    <tr>
+                    <tr class="status-aberto">
                         <td>1</td>
                         <td>monique</td>
                         <td>35225241145</td>
                         <td>fcas</td>
                         <td>ti</td>
                         <td>hardware</td>
-                        <td>problema no pc</td>
+                        <td>problema</td>
+                        <td>data</td>
+                        <td>aberto</td>
                     </tr> 
-                    <tr>
+                    <tr class="status-concluido">
                         <td>2</td>
                         <td>monique</td>
                         <td>35225241145</td>
@@ -45,6 +51,8 @@
                         <td>ti</td>
                         <td>hardware</td>
                         <td>problema no pc</td>
+                        <td>data</td>
+                        <td>aberto</td>
                     </tr> 
                     <tr>
                         <td>3</td>
@@ -53,11 +61,23 @@
                         <td>fcas</td>
                         <td>ti</td>
                         <td>hardware</td>
+                        <td>problema no pc</td><td>data</td>
+                        <td>fechado</td>
+                    </tr>  
+                    <tr>
+                        <td>3</td>
+                        <td>monique</td>
+                        <td>35225241145</td>
+                        <td>fcas</td>
+                        <td>ti</td>
+                        <td>hardware</td>
                         <td>problema no pc</td>
-                    </tr>              
+                    </tr>
+                                 
                 </table>
             </div>
         </div>
+        <button class="btn-voltar"><a href="./chamadoOpcao.php">Voltar</a></button>
     </div>
 </body>
 </html>

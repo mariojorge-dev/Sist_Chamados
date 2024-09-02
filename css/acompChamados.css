@@ -10,8 +10,14 @@ h1{
     color: var(--color-dark);
     margin-bottom: 20px;
 }
+.tabela{   
+    border-radius: 16px;
+    border: 2px solid var(--color-dark);
+    border-radius: 6px;  
+}
 .form-busca{
     text-align: left;
+    margin: 16px 0px;
 }
 .form-busca input{
     border: solid 2px var(--color-dark);
@@ -29,31 +35,68 @@ h1{
     background-color: var(--color-dark);
     color: white;
     height: 28px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 16px;
+    padding-right: 16px;
     border-radius: 20px;
     cursor: pointer;
 }
 table {
     width: 100%;
-    text-align: left;
-    
+    text-align: left;  
     padding: 12px;
-}
-.colunas{
-    background-color: var(--color-dark);
-    color: white;
+    padding-top: 0px;  
 }
 td {
-    border: 2px solid black;
+    border: 2px solid rgb(94, 94, 94);
+    padding: 2px 10px;
+    background-color: var(--color-bginput);
+    border-radius: 4px;
+    max-width: 400px;
+    word-wrap: break-word;
 }
 th {
+    color: white;
     padding-right: 20px;
+    padding-left: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     border-radius: 4px;
+    font-size: 18px;
+    font-weight: 400;
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    background-color: var(--color-dark);
 }
-.tabela{
+.wrap-scroll{
+    overflow-y:auto;
+    overflow-x: auto;
+    height: 450px;
     
-    border-radius: 16px;
-    border: 2px solid var(--color-dark);
+    border-radius: 20px;
+
+}
+.status-aberto td{
+    background-color: var(--color-statusAberto);
+}
+.status-concluido td
+{
+    background-color: var(--color-statusConcluido);
+}
+.btn-voltar {
+    margin-top: 1em;
+    outline: none;
+    border: none;
+    background-color: var(--color-dark);
+    color: white;
+    height: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
     border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px ;
+    cursor: pointer;
+}
+.btn-voltar a{
+    color: white;
+    text-decoration: none;
 }

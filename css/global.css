@@ -3,6 +3,9 @@
     --color-ligth: #50b0e7;
     --color-dark: #104e9a;
     --color-bginput: #f0f0f0;
+    --color-statusAberto:rgb(255, 228, 75);
+    --color-statusConcluido: rgb(130, 255, 92);
+    
 }
 
 *{
