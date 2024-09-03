@@ -3,9 +3,10 @@
     --color-ligth: #50b0e7;
     --color-dark: #104e9a;
     --color-bginput: #f0f0f0;
-    --color-statusAberto:rgb(255, 228, 75);
+    --color-statusAberto:rgb(255, 79, 79);
     --color-statusConcluido: rgb(130, 255, 92);
-    
+    --color-statusEmProgresso: rgb(255, 244, 92);
+    --color-statusDesconsiderar: rgb(151, 151, 151);
 }
 
 *{

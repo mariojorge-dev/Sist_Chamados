@@ -76,13 +76,6 @@ th {
     border-radius: 20px;
 
 }
-.status-aberto td{
-    background-color: var(--color-statusAberto);
-}
-.status-concluido td
-{
-    background-color: var(--color-statusConcluido);
-}
 .btn-voltar {
     margin-top: 1em;
     outline: none;
@@ -99,4 +92,19 @@ th {
 .btn-voltar a{
     color: white;
     text-decoration: none;
+}
+.status-aberto td{
+    background-color: var(--color-statusAberto);
+}
+.status-concluido td
+{
+    background-color: var(--color-statusConcluido);
+}
+.status-em-progresso td
+{
+    background-color: var(--color-statusEmProgresso);
+}
+.status-em-progresso td
+{
+    background-color: var(--color-statusEmProgresso);
 }
