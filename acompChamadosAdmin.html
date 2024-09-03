@@ -42,7 +42,12 @@
                         <td>hardware</td>
                         <td>problema</td>
                         <td>data</td>
-                        <td>aberto</td>
+                        <td><select name="status" style="background-color: var(--color-statusAberto)" id="status">
+                            <option value="aberto" style="background-color: var(--color-statusAberto)" >Aberto</option>
+                            <option value="em-progresso" style="background-color: var(--color-statusEmProgresso)">Em Progresso</option>
+                            <option value="concluido" style="background-color: var(--color-statusConcluido)">Concluido</option>
+                            <option value="desconsiderar" style="background-color: var(--color-statusDesconsiderar)">Desconsiderar</option>
+                        </select></td>
                         <td></td>
                     </tr> 
                     <tr class="status-concluido">
@@ -54,29 +59,14 @@
                         <td>hardware</td>
                         <td>problema no pc</td>
                         <td>data</td>
-                        <td>aberto</td>
+                        <td><select name="status" style="background-color: var(--color-statusFechado)" id="status">
+                            <option name="status" value="aberto" style="background-color: var(--color-statusAberto)" >Aberto</option>
+                            <option name="status" value="em-progresso" style="background-color: var(--color-statusEmProgresso)">Em Progresso</option>
+                            <option name="status" value="concluido" style="background-color: var(--color-statusConcluido)">Concluido</option>
+                            <option name="status" value="desconsiderar" style="background-color: var(--color-statusDesconsiderar)">Desconsiderar</option>
+                        </select></td>
                         <td></td>
-                    </tr> 
-                    <tr>
-                        <td>3</td>
-                        <td>monique</td>
-                        <td>35225241145</td>
-                        <td>fcas</td>
-                        <td>ti</td>
-                        <td>hardware</td>
-                        <td>problema no pc</td><td>data</td>
-                        <td>fechado</td>
-                    </tr>  
-                    <tr>
-                        <td>3</td>
-                        <td>monique</td>
-                        <td>35225241145</td>
-                        <td>fcas</td>
-                        <td>ti</td>
-                        <td>hardware</td>
-                        <td>problema no pc</td>
-                    </tr>
-                                 
+                    </tr>                                 
                 </table>
             </div>
         </div>

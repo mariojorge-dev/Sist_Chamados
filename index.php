@@ -18,10 +18,11 @@
         </div>
         <form action="">
             <h2>Usuário</h2>
+            <p>Digite o mesmo e-mail informado na abertura dos chamados que deseja acompanhar</p>
             <div class="input-box">
-                <input name="usuario" id="usuario" type="text" required>
+                <input placeholder="exemplo@email.com" name="usuario" id="usuario" type="text" required>
             </div>
-            <button  class="btn" type="submit" id="submit"><a href="chamadoOpcao.php">Entrar</a></button>  
+            <button class="btn" type="submit" id="submit"><a href="chamadoOpcao.php">Entrar</a></button>  
         </form>
     </div>
 </body>

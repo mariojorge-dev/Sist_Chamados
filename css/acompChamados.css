@@ -96,15 +96,22 @@ th {
 .status-aberto td{
     background-color: var(--color-statusAberto);
 }
+.status-em-progresso td
+{
+    background-color: var(--color-statusEmProgresso);
+}
 .status-concluido td
 {
     background-color: var(--color-statusConcluido);
 }
-.status-em-progresso td
+.status-desconsiderar td
 {
-    background-color: var(--color-statusEmProgresso);
+    background-color: var(--color-statusDesconsiderar);
 }
-.status-em-progresso td
-{
-    background-color: var(--color-statusEmProgresso);
+select{
+    text-decoration: none;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    text-align: center;
 }
