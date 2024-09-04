@@ -83,3 +83,24 @@ legend {
     text-decoration: none;
     color: white;
 }
+.popup{
+    display: flex;
+    background-color: white;
+    height: 200px;
+    width: 350px;
+    z-index: 2;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px;
+    border: solid 2px var(--color-dark);
+    flex-direction: column;
+    padding: 20px;
+}
+.popup h2{
+    margin-top: 20px;
+}
+.popup p{
+    padding: 8px;
+}

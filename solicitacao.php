@@ -25,12 +25,13 @@ if(isset($_POST['submit'])){
     }
 
     $result = mysqli_query($conexao, "INSERT INTO `chamados`.`chamados` (`email`, `responsavel`, `telefone`, `orgao`, `setor`, `problema`, `desc-problem`, `data-abertura`) VALUES ('$email', '$responsavel', '$telefone', '$orgaoSelecionado', '$setorSelecionado', '$problemaSelecionado', '$descproblem', NOW())");
-    echo $result;
+    
+    if (mysqli_query($conexao, $result)) {
+        echo "<script>alert('Alterado com sucesso!');</script>";
+    } else {
+        echo "<script>alert('Alterado com sucesso!');</script>";
+    }
 }
-echo $result;
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +45,6 @@ echo $result;
     <link rel="stylesheet" href="./css/solicitacao.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -143,11 +143,5 @@ echo $result;
                 <button class="btn"><a href="./index.php">Voltar</a></button><button class="btn" name="submit" type="submit" id="submit">Enviar</button>    
             </form>
         </div>
-    </div>
-
-    <dialog close> 
-        <p>CHAMADO ABERTO</p>
-    </dialog>
-
 </body>
 </html>
