@@ -26,10 +26,10 @@ if(isset($_POST['submit'])){
 
     $result = mysqli_query($conexao, "INSERT INTO `chamados`.`chamados` (`email`, `responsavel`, `telefone`, `orgao`, `setor`, `problema`, `desc-problem`, `data-abertura`) VALUES ('$email', '$responsavel', '$telefone', '$orgaoSelecionado', '$setorSelecionado', '$problemaSelecionado', '$descproblem', NOW())");
     
-    if ($result) {
-        echo "<script>alert('Chamado aberto com sucesso!');</script>";
+    if (mysqli_query($conexao, $result)) {
+        echo "<script>alert('Alterado com sucesso!');</script>";
     } else {
-        echo "<script>alert('Falaha ao abrir chamado!');</script>";
+        echo "<script>alert('Alterado com sucesso!');</script>";
     }
 }
 ?>
