@@ -140,12 +140,12 @@ echo $result;
                         <textarea name="desc-problem" id="desc-problem" placeholder="Digite o problema da forma mais detalhada possivel"></textarea>
                     </fieldset>
                 </div>
-                <button class="btn" name="submit" type="submit" id="submit">Enviar</button>    
+                <button class="btn"><a href="./index.php">Voltar</a></button><button class="btn" name="submit" type="submit" id="submit">Enviar</button>    
             </form>
         </div>
     </div>
 
-    <dialog open> 
+    <dialog close> 
         <p>CHAMADO ABERTO</p>
     </dialog>
 

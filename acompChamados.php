@@ -30,8 +30,7 @@
                         <th>Problema</th>
                         <th>Descrição do Problema</th>
                         <th>Data de Abertutra</th>
-                        <th>Status</th>
-                        <th>Resolução</th>                     
+                        <th>Status</th>                   
                     </tr>
                     <tr class="status-aberto">
                         <td>1</td>
@@ -42,7 +41,6 @@
                         <td>hardware</td>
                         <td>problema</td>
                         <td>data</td>
-                        <td></td>
                         <td></td>
                     </tr> 
                     <tr class="status-concluido">
@@ -55,12 +53,11 @@
                         <td>problema no pc</td>
                         <td>data</td>
                         <td>aberto</td>
-                        <td>aaaaaaaaaaaaassssssssssss</td>
                     </tr>                                       
                 </table>
             </div>
         </div>
-        <button class="btn-voltar"><a href="./chamadoOpcao.php">Voltar</a></button>
+        <button class="btn-voltar"><a href="./index.php">Voltar</a></button>
     </div>
 </body>
 </html>

@@ -77,4 +77,9 @@ legend {
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px ;
     cursor: pointer;
+    margin: 10px 30px;
+}
+.btn a{
+    text-decoration: none;
+    color: white;
 }
