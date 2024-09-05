@@ -1,37 +1,31 @@
 <?php
-if(isset($_POST['submit'])){
+if (!empty($_GET['email'])){
 
-    include_once("conexao.php");
+    $email = $_GET['email'];
 
-    $email = $_POST['email'];
-    $responsavel = $_POST['responsavel'];
-    $telefone = $_POST['telefone'];
-    $orgao = $_POST['orgao'];
-    $setor = $_POST['setor'];
-    $problema = $_POST['problema'];
-    $descproblem = $_POST['desc-problem'];
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Recupera o valor selecionado
-        $orgaoSelecionado = $_POST['orgao'];
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Recupera o valor selecionado
-        $setorSelecionado = $_POST['setor'];
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Recupera o valor selecionado
-        $problemaSelecionado = $_POST['problema'];
+
+
+    $sql = "select * from chamados.chamados where email = '$email'";
+
+    include "conexao.php";
+    $dados = mysqli_query($conexao, $sql);
+
+
+    while ($linha = mysqli_fetch_assoc($dados)) {
+        $email = $linha['email'];
+        $responsavel = $linha['responsavel'];
+        $telefone = $linha['telefone'];
+        $orgao = $linha['orgao'];
+        $setor = $linha['setor'];
+        $problema = $linha['problema'];
+        $descproblem = $linha['desc-problem'];
     }
 
-    $result = mysqli_query($conexao, "INSERT INTO `chamados`.`chamados` (`email`, `responsavel`, `telefone`, `orgao`, `setor`, `problema`, `desc-problem`, `data-abertura`) VALUES ('$email', '$responsavel', '$telefone', '$orgaoSelecionado', '$setorSelecionado', '$problemaSelecionado', '$descproblem', NOW())");
-    
-    if (mysqli_query($conexao, $result)) {
-        echo "<script>alert('Alterado com sucesso!');</script>";
-    } else {
-        echo "<script>alert('Alterado com sucesso!');</script>";
-    }
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -56,11 +50,11 @@ if(isset($_POST['submit'])){
             <form action="solicitacao.php" method="POST">
                 <div class="input-email">
                     <label for="" >Email:</label>
-                    <input placeholder="Digite seu e-mail" name="email" required id="email" type="email">
+                    <input placeholder="Digite seu e-mail" name="email" required id="email" type="email" value="<?php echo $email; ?>">
                 </div>
                 <div class="input-responsavel">
                     <label for="">Responsável:</label>
-                    <input placeholder="Nome do responsável" name="responsavel" type="text" id="responsavel">
+                    <input placeholder="Nome do responsável" name="responsavel" type="text" id="responsavel" value="<?php echo $responsavel; ?>">
                 </div>
                 <div class="input-celular">
                     <label for="">Telefone/Celular:</label>
@@ -137,7 +131,7 @@ if(isset($_POST['submit'])){
                 <div class="input-desc-problem">
                     <fieldset>
                         <legend>Descrição do Problema:</legend>
-                        <textarea name="desc-problem" id="desc-problem" placeholder="Digite o problema da forma mais detalhada possivel"></textarea>
+                        <textarea name="desc-problem" id="desc-problem" placeholder="Digite o problema da forma mais detalhada possivel" value="<?php echo $descproblem; ?>"></textarea>
                     </fieldset>
                 </div>
                 <button class="btn"><a href="./index.php">Voltar</a></button><button class="btn" name="submit" type="submit" id="submit">Enviar</button>    

@@ -12,6 +12,17 @@
     
 </head>
 <body>
+        <?php
+
+        $pesquisa = $_POST['usuario'] ?? '';
+
+        include "conexao.php";
+        $sql = "select * from chamados.chamados where email like '%$pesquisa%'";
+
+        $dados = mysqli_query($conexao, $sql);
+
+        ?>
+
     <div class="container">
         <div class="img-logo">
             <img src="./img/Logo-Site-1024x1024.png" alt="">
@@ -22,7 +33,7 @@
             <div class="input-box">
                 <input placeholder="exemplo@email.com" name="usuario" id="usuario" type="text" required>
             </div>
-            <button class="btn"><a href="./index.php">Voltar</a></button><button class="btn" type="submit" id="submit"><a href="acompChamados.php">Entrar</a></button>  
+            <button class="btn"><a href='solicitacaoEditar.php?cpf=$cpf';>Voltar</a></button><button class="btn" type="submit" id="submit"><a href="acompChamados.php">Entrar</a></button>  
         </form>
     </div>
 </body>

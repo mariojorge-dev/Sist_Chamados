@@ -22,7 +22,7 @@
             <div class="wrap-scroll">
                 <table>
                     <tr>
-                        <th>Nº do Chamado</th>
+                        <th>Nº</th>
                         <th>E-mail</th>
                         <th>Responsável</th>
                         <th>Orgão</th>
