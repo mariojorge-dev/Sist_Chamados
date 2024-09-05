@@ -1,33 +1,3 @@
-<?php
-if (isset($_POST['submit'])) {
-    include_once("conexao.php");
-
-    // Recupera os dados do formulário
-    $id = $_POST['id']; // Adicione um campo oculto no formulário HTML para o ID
-    $email = $_POST['email'];
-    $responsavel = $_POST['responsavel'];
-    $telefone = $_POST['telefone'];
-    $orgao = $_POST['orgao'];
-    $setor = $_POST['setor'];
-    $problema = $_POST['problema'];
-    $descproblem = $_POST['desc-problem'];
-
-    // Usando prepared statements para evitar SQL Injection
-    $stmt = $conexao->prepare("UPDATE chamados.chamados SET email = ?, responsavel = ?, telefone = ?, orgao = ?, setor = ?, problema = ?, `desc-problem` = ? WHERE idchamado = ?");
-    $stmt->bind_param("sssssssi", $email, $responsavel, $telefone, $orgao, $setor, $problema, $descproblem, $id);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Alterado com sucesso!'); window.location.href='./index.php';</script>";
-    } else {
-        echo "<script>alert('Não foi possível fazer a alteração!');</script>";
-    }
-
-    $stmt->close();
-    $conexao->close();
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -49,21 +19,20 @@ if (isset($_POST['submit'])) {
         </div>
         <h2>Editar Chamado</h2>
         <div class="form">
-        <form action="script-editar.php" method="POST">
+            <form action="script-editar.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+
                 <div class="input-email">
-                    <label for="">Email:</label>
-                    <input placeholder="Digite seu e-mail" name="email" required id="email" type="email"
-                        value="<?php echo htmlspecialchars($email); ?>">
+                    <label for="email">Email:</label>
+                    <input placeholder="Digite seu e-mail" name="email" required id="email" type="email" value="<?php echo htmlspecialchars($email); ?>">
                 </div>
                 <div class="input-responsavel">
-                    <label for="">Responsável:</label>
-                    <input placeholder="Nome do responsável" name="responsavel" type="text" id="responsavel"
-                        value="<?php echo htmlspecialchars($responsavel); ?>">
+                    <label for="responsavel">Responsável:</label>
+                    <input placeholder="Nome do responsável" name="responsavel" type="text" id="responsavel" value="<?php echo htmlspecialchars($responsavel); ?>">
                 </div>
                 <div class="input-celular">
-                    <label for="">Telefone/Celular:</label>
-                    <input placeholder="Número de telefone/celular do responsável" name="telefone" type="tel"
-                        id="telefone" value="<?php echo htmlspecialchars($telefone); ?>">
+                    <label for="telefone">Telefone/Celular:</label>
+                    <input placeholder="Número de telefone/celular do responsável" name="telefone" type="tel" id="telefone" value="<?php echo htmlspecialchars($telefone); ?>">
                 </div>
                 <div class="input-orgao">
                     <label for="">Órgão:</label>
