@@ -1,3 +1,23 @@
+<?php
+// Incluir a conexão com o banco de dados
+include "conexao.php";
+
+// Verifica se há uma pesquisa e monta o SQL de acordo
+$pesquisa = $_GET['busca'] ?? '';
+
+if (!empty($pesquisa)) {
+    // Se o usuário pesquisou algo
+    $sql = "SELECT * FROM chamados.chamados WHERE email LIKE '%$pesquisa%' OR problema LIKE '%$pesquisa%' OR responsavel LIKE '%$pesquisa%'";
+} else {
+    // Se não houver pesquisa, mostra todos os chamados
+    $sql = "SELECT * FROM chamados.chamados";
+}
+
+// Executa a query no banco de dados
+$dados = mysqli_query($conexao, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,15 +32,19 @@
 <body>
     <div class="container">
         <h1>Chamados Abertos:</h1>
-        <div class="tabela">
-            <div class="form-busca">
-                <form  action="">
-                    <input type="search" placeholder="Buscar Chamados">
-                    <button><ion-icon name="search-outline"></ion-icon></button>
-                </form>
-            </div>
-            <div class="wrap-scroll">
-                <table>
+
+        <!-- Formulário de busca -->
+        <div class="form-busca">
+            <form action="acompChamados.php" method="GET">
+                <input type="search" name="busca" placeholder="Buscar Chamados" value="<?php echo $pesquisa; ?>" required>
+                <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+            </form>
+        </div>
+
+        <!-- Tabela de resultados -->
+        <div class="wrap-scroll">
+            <table>
+                <thead>
                     <tr>
                         <th>Nº</th>
                         <th>E-mail</th>
@@ -29,35 +53,38 @@
                         <th>Setor</th>
                         <th>Problema</th>
                         <th>Descrição do Problema</th>
-                        <th>Data de Abertutra</th>
+                        <th>Data de Abertura</th>
                         <th>Status</th>                   
                     </tr>
-                    <tr class="status-aberto">
-                        <td>1</td>
-                        <td>mnq@gmail.commmmm</td>
-                        <td>monique</td>
-                        <td>fcas</td>
-                        <td>ti</td>
-                        <td>hardware</td>
-                        <td>problema</td>
-                        <td>data</td>
-                        <td></td>
-                    </tr> 
-                    <tr class="status-concluido">
-                        <td>2</td>
-                        <td>mnq@gmail.commmmm</td>
-                        <td>monique</td>
-                        <td>fcas</td>
-                        <td>ti</td>
-                        <td>hardware</td>
-                        <td>problema no pc</td>
-                        <td>data</td>
-                        <td>aberto</td>
-                    </tr>                                       
-                </table>
-            </div>
+                </thead>
+                <tbody>
+                    <?php
+                    // Verifica se houve retorno de dados
+                    if (mysqli_num_rows($dados) > 0) {
+                        // Loop pelos resultados e mostra na tabela
+                        while ($linha = mysqli_fetch_assoc($dados)) {
+                            echo "<tr class='" . ($linha['status'] == 'concluido' ? 'status-concluido' : 'status-aberto') . "'>";
+                            echo "<td>" . $linha['id'] . "</td>";
+                            echo "<td>" . $linha['email'] . "</td>";
+                            echo "<td>" . $linha['responsavel'] . "</td>";
+                            echo "<td>" . $linha['orgao'] . "</td>";
+                            echo "<td>" . $linha['setor'] . "</td>";
+                            echo "<td>" . $linha['problema'] . "</td>";
+                            echo "<td>" . $linha['desc-problem'] . "</td>";
+                            echo "<td>" . $linha['data_abertura'] . "</td>";
+                            echo "<td>" . ucfirst($linha['status']) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='9'>Nenhum chamado encontrado.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
-        <button class="btn-voltar"><a href="./index.php">Voltar</a></button>
+
+        <!-- Botão voltar -->
+        <button class="btn-voltar" type="button" onclick="window.history.back();">Voltar</button>
     </div>
 </body>
 </html>
