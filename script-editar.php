@@ -231,7 +231,7 @@ if (isset($_POST['submit'])) {
                     </fieldset>
                 </div>
 
-                <button class="btn"><a href="./index.php">Voltar</a></button>
+                <button class="btn"><a href="./acompChamados.php">Voltar</a></button>
                 <button class="btn" name="submit" type="submit" id="submit">Enviar</button>
             </form>
         </div>
