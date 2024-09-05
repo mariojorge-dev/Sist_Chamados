@@ -2,20 +2,19 @@
 // Incluir a conexão com o banco de dados
 include "conexao.php";
 
-// Verifica se há uma pesquisa e monta o SQL de acordo
-$pesquisa = $_GET['busca'] ?? '';
+// Pega o e-mail enviado pelo formulário
+$email = $_POST['usuario'] ?? '';
 
-if (!empty($pesquisa)) {
-    // Se o usuário pesquisou algo
-    $sql = "SELECT * FROM chamados.chamados WHERE email LIKE '%$pesquisa%' OR problema LIKE '%$pesquisa%' OR responsavel LIKE '%$pesquisa%'";
+if (!empty($email)) {
+    // Se o e-mail foi enviado, filtra os chamados com o e-mail correspondente
+    $sql = "SELECT * FROM chamados.chamados WHERE email = '$email'";
 } else {
-    // Se não houver pesquisa, mostra todos os chamados
-    $sql = "SELECT * FROM chamados.chamados";
+    // Se não houver e-mail, não faz a busca
+    $sql = "SELECT * FROM chamados.chamados WHERE 1 = 0"; // Retorna nenhum resultado
 }
 
 // Executa a query no banco de dados
 $dados = mysqli_query($conexao, $sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +34,8 @@ $dados = mysqli_query($conexao, $sql);
 
         <!-- Formulário de busca -->
         <div class="form-busca">
-            <form action="acompChamados.php" method="GET">
-                <input type="search" name="busca" placeholder="Buscar Chamados" value="<?php echo $pesquisa; ?>" required>
+            <form action="acompChamados.php" method="POST">
+                <input type="search" name="usuario" placeholder="Buscar Chamados" value="<?php echo htmlspecialchars($email); ?>" required>
                 <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
             </form>
         </div>
