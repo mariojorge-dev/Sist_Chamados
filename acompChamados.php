@@ -64,7 +64,7 @@ $dados = mysqli_query($conexao, $sql);
                         // Loop pelos resultados e mostra na tabela
                         while ($linha = mysqli_fetch_assoc($dados)) {
                             echo "<tr class='" . ($linha['status'] == 'concluido' ? 'status-concluido' : 'status-aberto') . "'>";
-                            echo "<td><a href='solicitacaoEditar.php?id=" . $linha['idchamado'] . "'><ion-icon name='create-outline'></ion-icon></a></td>"; // Ícone de lápis
+                            echo "<td><a href='solicitacaoEditar.php?idchamado=" . $linha['idchamado'] . "'><ion-icon name='create-outline'></ion-icon></a></td>";
                             echo "<td>" . $linha['idchamado'] . "</td>";
                             echo "<td>" . $linha['email'] . "</td>";
                             echo "<td>" . $linha['responsavel'] . "</td>";
