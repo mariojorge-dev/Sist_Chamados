@@ -28,8 +28,8 @@ if(isset($_POST['submit'])){
     
     if ($result) {
         echo "<script>alert('Chamado aberto com sucesso!');</script>";
-        // Redireciona após o sucesso
-        echo "<script>window.location.href = 'acompChamados.php';</script>";
+        // Redireciona para a página acompChamados.php com o e-mail como parâmetro
+        echo "<script>window.location.href = 'acompChamados.php?usuario=" . urlencode($email) . "';</script>";
     } else {
         echo "<script>alert('Falha ao abrir chamado!');</script>";
     }
