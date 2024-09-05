@@ -219,7 +219,7 @@ if (!empty($_GET['idchamado'])) {
                     </fieldset>
                 </div>
 
-                <button class="btn"><a href="./acompChamados.php?usuario=<?php echo urlencode($email); ?>">Voltar</a></button>
+                <button class="btn"><a href="./index.php?">Voltar</a></button>
                 <button class="btn" name="submit" type="submit" id="submit">Enviar</button>
             </form>
         </div>
