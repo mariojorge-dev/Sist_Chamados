@@ -1,34 +1,32 @@
 <?php
-if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_POST['submit'])) {
+    include_once("conexao.php");
 
-    include "conexao.php";
+    // Recupera os dados do formulário
+    $id = $_POST['id']; // Adicione um campo oculto no formulário HTML para o ID
+    $email = $_POST['email'];
+    $responsavel = $_POST['responsavel'];
+    $telefone = $_POST['telefone'];
+    $orgao = $_POST['orgao'];
+    $setor = $_POST['setor'];
+    $problema = $_POST['problema'];
+    $descproblem = $_POST['desc-problem'];
 
     // Usando prepared statements para evitar SQL Injection
-    $stmt = $conexao->prepare("SELECT * FROM chamados.chamados WHERE idchamado = ?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt = $conexao->prepare("UPDATE chamados.chamados SET email = ?, responsavel = ?, telefone = ?, orgao = ?, setor = ?, problema = ?, `desc-problem` = ? WHERE idchamado = ?");
+    $stmt->bind_param("sssssssi", $email, $responsavel, $telefone, $orgao, $setor, $problema, $descproblem, $id);
 
-    // Assume-se que o ID é único e pega apenas um registro
-    if ($linha = $result->fetch_assoc()) {
-        $email = $linha['email'];
-        $responsavel = $linha['responsavel'];
-        $telefone = $linha['telefone'];
-        $orgao = $linha['orgao'];
-        $setor = $linha['setor'];
-        $problema = $linha['problema'];
-        $descproblem = $linha['desc-problem'];
+    if ($stmt->execute()) {
+        echo "<script>alert('Alterado com sucesso!'); window.location.href='./index.php';</script>";
+    } else {
+        echo "<script>alert('Não foi possível fazer a alteração!');</script>";
     }
 
     $stmt->close();
     $conexao->close();
-} else {
-    // Redireciona ou mostra uma mensagem de erro se não houver ID
-    echo "ID não fornecido.";
-    exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
