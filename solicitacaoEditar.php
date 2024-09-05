@@ -1,20 +1,33 @@
 <?php
-// Incluir a conexão com o banco de dados
-include "conexao.php";
+if (!empty($_GET['id'])) {
+    $id = $_GET['id'];
 
-// Pega o e-mail enviado pelo formulário
-$email = $_POST['usuario'] ?? '';
+    include "conexao.php";
 
-if (!empty($email)) {
-    // Se o e-mail foi enviado, filtra os chamados com o e-mail correspondente
-    $sql = "SELECT * FROM chamados.chamados WHERE email = '$email'";
+    // Usando prepared statements para evitar SQL Injection
+    $stmt = $conexao->prepare("SELECT * FROM chamados.chamados WHERE idchamado = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Assume-se que o ID é único e pega apenas um registro
+    if ($linha = $result->fetch_assoc()) {
+        $email = $linha['email'];
+        $responsavel = $linha['responsavel'];
+        $telefone = $linha['telefone'];
+        $orgao = $linha['orgao'];
+        $setor = $linha['setor'];
+        $problema = $linha['problema'];
+        $descproblem = $linha['desc-problem'];
+    }
+
+    $stmt->close();
+    $conexao->close();
 } else {
-    // Se não houver e-mail, não faz a busca
-    $sql = "SELECT * FROM chamados.chamados WHERE 1 = 0"; // Retorna nenhum resultado
+    // Redireciona ou mostra uma mensagem de erro se não houver ID
+    echo "ID não fornecido.";
+    exit();
 }
-
-// Executa a query no banco de dados
-$dados = mysqli_query($conexao, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -22,70 +35,70 @@ $dados = mysqli_query($conexao, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acompanhar Chamados</title>
-    <link rel="stylesheet" href="./css/acompChamados.css">
+    <title>Editar Chamado</title>
+    <link rel="icon" href="./img/Logo-Site-1024x1024.png">
     <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/solicitacao.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Chamados Abertos:</h1>
-
-        <!-- Formulário de busca -->
-        <div class="form-busca">
-            <form action="acompChamados.php" method="POST">
-                <input type="search" name="usuario" placeholder="Buscar Chamados" value="<?php echo htmlspecialchars($email); ?>" required>
-                <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+        <div class="img-logo">
+            <img src="./img/Logo-Site-1024x1024.png" alt="">
+        </div>
+        <h2>Editar Chamado</h2>
+        <div class="form">
+            <form action="solicitacao.php" method="POST">
+                <div class="input-email">
+                    <label for="">Email:</label>
+                    <input placeholder="Digite seu e-mail" name="email" required id="email" type="email"
+                        value="<?php echo htmlspecialchars($email); ?>">
+                </div>
+                <div class="input-responsavel">
+                    <label for="">Responsável:</label>
+                    <input placeholder="Nome do responsável" name="responsavel" type="text" id="responsavel"
+                        value="<?php echo htmlspecialchars($responsavel); ?>">
+                </div>
+                <div class="input-celular">
+                    <label for="">Telefone/Celular:</label>
+                    <input placeholder="Número de telefone/celular do responsável" name="telefone" type="tel" id="telefone" value="<?php echo htmlspecialchars($telefone); ?>">
+                </div>
+                <div class="input-orgao">
+                    <label for="">Órgão:</label>
+                    <select id="orgao" name="orgao">
+                        <option value="">Selecione</option>
+                        <option value="das" <?php if ($orgao == 'das') echo 'selected'; ?>>DAS</option>
+                        <option value="fcas" <?php if ($orgao == 'fcas') echo 'selected'; ?>>FCAS</option>
+                        <!-- Adicione outras opções conforme necessário -->
+                    </select>
+                </div>
+                <div class="input-setor">
+                    <label for="setor">Setor:</label>
+                    <select name="setor" id="setor">
+                        <option value="">Selecione</option>
+                        <option value="administrativo" <?php if ($setor == 'administrativo') echo 'selected'; ?>>ADMINISTRATIVO</option>
+                        <!-- Adicione outras opções conforme necessário -->
+                    </select>
+                </div>
+                <div class="input-desc-problem">
+                    <fieldset>
+                        <legend>Descrição do Problema:</legend>
+                        <textarea name="desc-problem" id="desc-problem" placeholder="Digite o problema da forma mais detalhada possível"><?php echo htmlspecialchars($descproblem); ?></textarea>
+                    </fieldset>
+                </div>
+                <div class="input-problema">
+                    <label for="problema">Problema:</label>
+                    <select name="problema" id="problema">
+                        <option value="">Selecione</option>
+                        <option value="hardware" <?php if ($problema == 'hardware') echo 'selected'; ?>>HARDWARE</option>
+                        <!-- Adicione outras opções conforme necessário -->
+                    </select>
+                </div>
+                <button class="btn"><a href="./index.php">Voltar</a></button>
+                <button class="btn" name="submit" type="submit" id="submit">Enviar</button>
             </form>
         </div>
-
-        <!-- Tabela de resultados -->
-        <div class="wrap-scroll">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Editar</th> <!-- Coluna para ícone de edição -->
-                        <th>Nº</th>
-                        <th>E-mail</th>
-                        <th>Responsável</th>
-                        <th>Orgão</th>
-                        <th>Setor</th>
-                        <th>Problema</th>
-                        <th>Descrição do Problema</th>
-                        <th>Data de Abertura</th>
-                        <th>Status</th>                   
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Verifica se houve retorno de dados
-                    if (mysqli_num_rows($dados) > 0) {
-                        // Loop pelos resultados e mostra na tabela
-                        while ($linha = mysqli_fetch_assoc($dados)) {
-                            echo "<tr class='" . ($linha['status'] == 'concluido' ? 'status-concluido' : 'status-aberto') . "'>";
-                            echo "<td><a href='solicitacaoEditar.php?id=" . $linha['idchamado'] . "'><ion-icon name='create-outline'></ion-icon></a></td>"; // Ícone de lápis
-                            echo "<td>" . $linha['idchamado'] . "</td>";
-                            echo "<td>" . $linha['email'] . "</td>";
-                            echo "<td>" . $linha['responsavel'] . "</td>";
-                            echo "<td>" . $linha['orgao'] . "</td>";
-                            echo "<td>" . $linha['setor'] . "</td>";
-                            echo "<td>" . $linha['problema'] . "</td>";
-                            echo "<td>" . $linha['desc-problem'] . "</td>";
-                            echo "<td>" . $linha['data-abertura'] . "</td>";
-                            echo "<td>" . ucfirst($linha['status']) . "</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='10'>Nenhum chamado encontrado.</td></tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Botão voltar -->
-        <button class="btn-voltar" type="button" onclick="window.history.back();">Voltar</button>
     </div>
 </body>
 </html>
