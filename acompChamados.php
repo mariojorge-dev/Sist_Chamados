@@ -45,6 +45,7 @@ $dados = mysqli_query($conexao, $sql);
             <table>
                 <thead>
                     <tr>
+                        <th>Editar</th> <!-- Coluna para ícone de edição -->
                         <th>Nº</th>
                         <th>E-mail</th>
                         <th>Responsável</th>
@@ -63,6 +64,7 @@ $dados = mysqli_query($conexao, $sql);
                         // Loop pelos resultados e mostra na tabela
                         while ($linha = mysqli_fetch_assoc($dados)) {
                             echo "<tr class='" . ($linha['status'] == 'concluido' ? 'status-concluido' : 'status-aberto') . "'>";
+                            echo "<td><a href='solicitacaoEditar.php?id=" . $linha['idchamado'] . "'><ion-icon name='create-outline'></ion-icon></a></td>"; // Ícone de lápis
                             echo "<td>" . $linha['idchamado'] . "</td>";
                             echo "<td>" . $linha['email'] . "</td>";
                             echo "<td>" . $linha['responsavel'] . "</td>";
@@ -75,7 +77,7 @@ $dados = mysqli_query($conexao, $sql);
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='9'>Nenhum chamado encontrado.</td></tr>";
+                        echo "<tr><td colspan='10'>Nenhum chamado encontrado.</td></tr>";
                     }
                     ?>
                 </tbody>
