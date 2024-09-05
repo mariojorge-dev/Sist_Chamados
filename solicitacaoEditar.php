@@ -173,15 +173,6 @@ if (!empty($_GET['id'])) {
                             echo 'selected'; ?>>GTI</option>
                     </select>
                 </div>
-
-                <div class="input-desc-problem">
-                    <fieldset>
-                        <legend>Descrição do Problema:</legend>
-                        <textarea name="desc-problem" id="desc-problem"
-                            placeholder="Digite o problema da forma mais detalhada possível"><?php echo $descproblem; ?></textarea>
-                    </fieldset>
-                </div>
-
                 <div class="input-problema">
                     <label for="problema">Problema:</label>
                     <select name="problema" id="problema">
@@ -214,6 +205,15 @@ if (!empty($_GET['id'])) {
                             echo 'selected'; ?>>OUTROS</option>
                     </select>
                 </div>
+
+                <div class="input-desc-problem">
+                    <fieldset>
+                        <legend>Descrição do Problema:</legend>
+                        <textarea name="desc-problem" id="desc-problem"
+                            placeholder="Digite o problema da forma mais detalhada possível"><?php echo $descproblem; ?></textarea>
+                    </fieldset>
+                </div>
+
                 <button class="btn"><a href="./index.php">Voltar</a></button>
                 <button class="btn" name="submit" type="submit" id="submit">Enviar</button>
             </form>
