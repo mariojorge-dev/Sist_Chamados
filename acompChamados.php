@@ -64,14 +64,14 @@ $dados = mysqli_query($conexao, $sql);
                         // Loop pelos resultados e mostra na tabela
                         while ($linha = mysqli_fetch_assoc($dados)) {
                             echo "<tr class='" . ($linha['status'] == 'concluido' ? 'status-concluido' : 'status-aberto') . "'>";
-                            echo "<td>" . $linha['id'] . "</td>";
+                            echo "<td>" . $linha['idchamado'] . "</td>";
                             echo "<td>" . $linha['email'] . "</td>";
                             echo "<td>" . $linha['responsavel'] . "</td>";
                             echo "<td>" . $linha['orgao'] . "</td>";
                             echo "<td>" . $linha['setor'] . "</td>";
                             echo "<td>" . $linha['problema'] . "</td>";
                             echo "<td>" . $linha['desc-problem'] . "</td>";
-                            echo "<td>" . $linha['data_abertura'] . "</td>";
+                            echo "<td>" . $linha['data-abertura'] . "</td>";
                             echo "<td>" . ucfirst($linha['status']) . "</td>";
                             echo "</tr>";
                         }
