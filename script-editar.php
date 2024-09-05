@@ -1,3 +1,42 @@
+<?php
+if (isset($_POST['submit'])) {
+    include_once("conexao.php");
+
+    // Recupera os dados do formulário
+    $id = $_POST['id']; // ID do chamado
+    $email = $_POST['email'];
+    $responsavel = $_POST['responsavel'];
+    $telefone = $_POST['telefone'];
+    $orgao = $_POST['orgao'];
+    $setor = $_POST['setor'];
+    $problema = $_POST['problema'];
+    $descproblem = $_POST['desc-problem'];
+
+    // Usando prepared statements para evitar SQL Injection
+    $stmt = $conexao->prepare("UPDATE chamados.chamados SET email = ?, responsavel = ?, telefone = ?, orgao = ?, setor = ?, problema = ?, `desc-problem` = ? WHERE idchamado = ?");
+    
+    if ($stmt === false) {
+        die("Erro ao preparar a consulta: " . $conexao->error);
+    }
+
+    $stmt->bind_param("sssssssi", $email, $responsavel, $telefone, $orgao, $setor, $problema, $descproblem, $id);
+
+    if ($stmt->execute()) {
+        if ($stmt->affected_rows > 0) {
+            echo "<script>alert('Alterado com sucesso!'); window.location.href='./index.php';</script>";
+        } else {
+            echo "<script>alert('Nenhuma alteração detectada.'); window.location.href='./index.php';</script>";
+        }
+    } else {
+        echo "<script>alert('Não foi possível fazer a alteração: " . $stmt->error . "');</script>";
+    }
+
+    $stmt->close();
+    $conexao->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
