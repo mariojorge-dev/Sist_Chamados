@@ -3,7 +3,7 @@ if (isset($_POST['submit'])) {
     include_once("conexao.php");
 
     // Recupera os dados do formulário
-    $id = $_POST['id'];
+    $id = $_POST['idchamado'];
     $email = $_POST['email'];
     $responsavel = $_POST['responsavel'];
     $telefone = $_POST['telefone'];

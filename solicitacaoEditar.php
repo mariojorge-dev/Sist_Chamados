@@ -1,6 +1,6 @@
 <?php
-if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
+if (!empty($_GET['idchamado'])) {
+    $id = $_GET['idchamado'];
 
     include "conexao.php";
 
@@ -51,7 +51,8 @@ if (!empty($_GET['id'])) {
         </div>
         <h2>Editar Chamado</h2>
         <div class="form">
-        <form action="script-editar.php" method="POST">
+            <form action="script-editar.php" method="POST">
+                <input type="hidden" name="idchamado" value="<?php echo htmlspecialchars($id); ?>">
                 <div class="input-email">
                     <label for="">Email:</label>
                     <input placeholder="Digite seu e-mail" name="email" required id="email" type="email"
