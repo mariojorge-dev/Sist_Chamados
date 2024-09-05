@@ -11,24 +11,11 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <?php
-    // Pega a pesquisa enviada pelo formulário (caso haja)
-    $pesquisa = $_POST['usuario'] ?? '';
-
-    // Inclui o arquivo de conexão
-    include "conexao.php";
-
-    // Realiza a consulta no banco de dados usando LIKE para e-mails semelhantes à pesquisa
-    $sql = "SELECT * FROM chamados.chamados WHERE email LIKE '%$pesquisa%'";
-
-    $dados = mysqli_query($conexao, $sql);
-    ?>
-
     <div class="container">
         <div class="img-logo">
             <img src="./img/Logo-Site-1024x1024.png" alt="">
         </div>
-        <form action="acompChamados.php" method="GET"> <!-- Envia o formulário via GET para acompChamados.php -->
+        <form action="acompChamados.php" method="POST"> <!-- Alterado para POST -->
             <h2>Usuário</h2>
             <p>Digite o mesmo e-mail informado na abertura dos chamados que deseja acompanhar</p>
             <div class="input-box">
