@@ -3,7 +3,7 @@ if (isset($_POST['submit'])) {
     include_once("conexao.php");
 
     // Recupera os dados do formulário
-    $id = $_POST['id']; // ID do chamado
+    $id = $_POST['id'];
     $email = $_POST['email'];
     $responsavel = $_POST['responsavel'];
     $telefone = $_POST['telefone'];
@@ -11,6 +11,16 @@ if (isset($_POST['submit'])) {
     $setor = $_POST['setor'];
     $problema = $_POST['problema'];
     $descproblem = $_POST['desc-problem'];
+
+    // Debug: Imprime os valores recebidos
+    echo "ID: $id<br>";
+    echo "Email: $email<br>";
+    echo "Responsável: $responsavel<br>";
+    echo "Telefone: $telefone<br>";
+    echo "Órgão: $orgao<br>";
+    echo "Setor: $setor<br>";
+    echo "Problema: $problema<br>";
+    echo "Descrição do Problema: $descproblem<br>";
 
     // Usando prepared statements para evitar SQL Injection
     $stmt = $conexao->prepare("UPDATE chamados.chamados SET email = ?, responsavel = ?, telefone = ?, orgao = ?, setor = ?, problema = ?, `desc-problem` = ? WHERE idchamado = ?");
@@ -35,6 +45,7 @@ if (isset($_POST['submit'])) {
     $conexao->close();
 }
 ?>
+
 
 
 <!DOCTYPE html>
