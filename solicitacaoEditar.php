@@ -12,6 +12,7 @@ if (!empty($_GET['idchamado'])) {
 
     // Assume-se que o ID é único e pega apenas um registro
     if ($linha = $result->fetch_assoc()) {
+        $id = $linha['idchamado'];
         $email = $linha['email'];
         $responsavel = $linha['responsavel'];
         $telefone = $linha['telefone'];
@@ -19,16 +20,19 @@ if (!empty($_GET['idchamado'])) {
         $setor = $linha['setor'];
         $problema = $linha['problema'];
         $descproblem = $linha['desc-problem'];
+    } else {
+        echo "Chamado não encontrado.";
+        exit();
     }
 
     $stmt->close();
     $conexao->close();
 } else {
-    // Redireciona ou mostra uma mensagem de erro se não houver ID
     echo "ID não fornecido.";
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
