@@ -22,9 +22,9 @@
             <div class="wrap-scroll">
                 <table>
                     <tr>
-                        <th>Id</th>
+                        <th>Nº do Chamado</th>
+                        <th>E-mail</th>
                         <th>Responsável</th>
-                        <th>Contato</th>
                         <th>Orgão</th>
                         <th>Setor</th>
                         <th>Problema</th>
@@ -34,8 +34,8 @@
                     </tr>
                     <tr class="status-aberto">
                         <td>1</td>
+                        <td>mnq@gmail.commmmm</td>
                         <td>monique</td>
-                        <td>35225241145</td>
                         <td>fcas</td>
                         <td>ti</td>
                         <td>hardware</td>
@@ -45,8 +45,8 @@
                     </tr> 
                     <tr class="status-concluido">
                         <td>2</td>
+                        <td>mnq@gmail.commmmm</td>
                         <td>monique</td>
-                        <td>35225241145</td>
                         <td>fcas</td>
                         <td>ti</td>
                         <td>hardware</td>
