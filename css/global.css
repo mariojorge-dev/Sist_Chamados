@@ -7,6 +7,8 @@
     --color-statusConcluido: rgb(130, 255, 92);
     --color-statusEmProgresso: rgb(255, 244, 92);
     --color-statusDesconsiderar: rgb(151, 151, 151);
+    --gradient1: #04348c;
+    --gradient2: #04cad4;
 }
 
 *{
@@ -20,5 +22,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--color-ligth) ;
+    background-image: linear-gradient(to left, var(--gradient2), var(--gradient1));
+}
+.container{
+    background-color: rgba(255, 255, 255, 0.65);
 }
