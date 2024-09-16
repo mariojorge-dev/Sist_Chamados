@@ -16,7 +16,7 @@
             <div class="form-busca">
                 <form  action="">
                     <input type="search" placeholder="Buscar Chamados">
-                    <button><ion-icon name="search-outline"></ion-icon></button>
+                    <button><ion-icon name="search"></ion-icon></button>
                 </form>
             </div>
             <div class="wrap-scroll">
@@ -48,7 +48,11 @@
                             <option value="concluido" style="background-color: var(--color-statusConcluido)">Concluido</option>
                             <option value="desconsiderar" style="background-color: var(--color-statusDesconsiderar)">Desconsiderar</option>
                         </select></td>
-                        <td></td>
+                        <td>
+                            <div>
+                                <textarea name="resolucao" id="resolucao"></textarea>
+                            </div>
+                        </td>
                     </tr> 
                     <tr class="status-concluido">
                         <td>2</td>
@@ -65,7 +69,11 @@
                             <option name="status" value="concluido" style="background-color: var(--color-statusConcluido)">Concluido</option>
                             <option name="status" value="desconsiderar" style="background-color: var(--color-statusDesconsiderar)">Desconsiderar</option>
                         </select></td>
-                        <td></td>
+                        <td>
+                        <div>
+                                <textarea name="resolucao" id="resolucao"></textarea>
+                            </div>
+                        </td>
                     </tr>                                 
                 </table>
             </div>

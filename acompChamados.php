@@ -36,7 +36,7 @@ $dados = mysqli_query($conexao, $sql);
         <div class="form-busca">
             <form action="acompChamados.php" method="POST">
                 <input type="search" name="usuario" placeholder="Buscar Chamados" value="<?php echo htmlspecialchars($email); ?>" required>
-                <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                <button type="submit"><ion-icon name="search"></ion-icon></button>
             </form>
         </div>
 
